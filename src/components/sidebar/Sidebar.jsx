@@ -5,15 +5,15 @@ import sniper from "../../assets/targets.png"
 const Sidebar = () => {
   const SearchValue=useRef();
 
-  const [contry,setCountry]=useState("");
+  const [conutry,setCountry]=useState("");
   useEffect(()=>{
-    axios.get(`http://api.weatherapi.com/v1/current.json?key=570663d036e449f4b69223704240304&q=${contry}&aqi=no`).
+    axios.get(`http://api.weatherapi.com/v1/current.json?key=570663d036e449f4b69223704240304&q=${conutry}&aqi=no`).
     then((res)=>(
       console.log(res.data)
     )).
     catch((res)=>console.log(res))
 
-  },[contry])
+  },[conutry])
 
   return (
     <>
