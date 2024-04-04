@@ -54,7 +54,7 @@ const Sidebar = () => {
             <input
               type="search"
               id="default-search"
-              className="block w-full outline-none p-4 py-7 ps-10 text-xs text-gray-900  placeholder-black border-gray-300 rounded-full bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="block w-full outline-none p-4  ps-10 text-xs text-gray-900  placeholder-black border-gray-300 rounded-full bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search for places ..."
               ref={SearchValue}
             />
