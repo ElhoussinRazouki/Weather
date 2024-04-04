@@ -26,7 +26,7 @@ const Sidebar = () => {
   return (
     <>
       <div className="flex h-[100vh] bg-white w-[50%] sm:w-[26%] flex-col items-start py-8 px-12 ">
-        <form className="w-full " onSubmit={(e) => e.preventDefault()}>
+        <form className="w-full pb-3 " onSubmit={(e) => e.preventDefault()}>
           <label
             htmlFor="default-search"
             className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
