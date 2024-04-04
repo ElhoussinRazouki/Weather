@@ -2,12 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import sniper from "../../assets/targets.png";
 
+
 const Sidebar = () => {
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const SearchValue = useRef();
 
-  const [targetName, setTargetName] = useState("khemisset");
+  const [targetName, setTargetName] = useState("Morocco");
   const [temp, setTemp] = useState("");
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(0);
+  const [timeHours, setTimeHours] = useState(0);
+  const [timeMinute, setTimeMinute] = useState(0);
 
 
   useEffect(() => {
@@ -17,8 +21,10 @@ const Sidebar = () => {
       )
       .then((res) => {
         setTemp(res.data.current.temp_c);
-        setDate(new Date(res.data.current.temp_c))
-        console.log(date);
+        setDate(new Date(res.data.current.last_updated).getDay())
+        setTimeHours(new Date(res.data.current.last_updated).getHours())
+        setTimeMinute(new Date(res.data.current.last_updated).getMinutes())
+        console.log(timeMinute);
       })
       .catch((error) => console.log(error));
   }, [targetName]);
@@ -80,6 +86,9 @@ const Sidebar = () => {
             {temp}
             °<span className="absolute end-0 top-0">c</span> 
           </h1>
+         <div className="flex">
+          <p className="text-lg"> {days[date]},</p><span className="text-lg text-slate-500">{timeHours}:{timeMinute}</span>
+         </div>
         </div>
       </div>
     </>
