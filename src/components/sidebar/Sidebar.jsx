@@ -8,10 +8,12 @@ const Sidebar = () => {
   const SearchValue = useRef();
 
   const [targetName, setTargetName] = useState("Morocco");
-  const [temp, setTemp] = useState("");
+  const [temp, setTemp] = useState(12);
   const [date, setDate] = useState(0);
   const [timeHours, setTimeHours] = useState(0);
   const [timeMinute, setTimeMinute] = useState(0);
+  const [condition,setCondition]=useState("");
+  const [icon,setIcon]=useState("");
 
 
   useEffect(() => {
@@ -24,6 +26,8 @@ const Sidebar = () => {
         setDate(new Date(res.data.current.last_updated).getDay())
         setTimeHours(new Date(res.data.current.last_updated).getHours())
         setTimeMinute(new Date(res.data.current.last_updated).getMinutes())
+        setCondition(res.data.current.condition.text)
+        setIcon(res.data.current.condition.icon)
         console.log(timeMinute);
       })
       .catch((error) => console.log(error));
@@ -31,13 +35,12 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="flex h-[100vh] bg-white w-[50%] sm:w-[26%] flex-col items-start py-8 px-12 ">
+      <div className="flex h-[100vh] bg-white w-[50%] sm:w-[26%] flex-col items-start py-8 px-12 gap-3 ">
         <form className="w-full pb-3 " onSubmit={(e) => e.preventDefault()}>
           <label
             htmlFor="default-search"
             className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
           >
-            Search
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -87,8 +90,13 @@ const Sidebar = () => {
             °<span className="absolute end-0 top-0">c</span> 
           </h1>
          <div className="flex">
-          <p className="text-lg"> {days[date]},</p><span className="text-lg text-slate-500">{timeHours}:{timeMinute}</span>
+          <p className="text-lg space-x-4"> {days[date]}, </p><span className="text-lg text-slate-500">  {timeHours}:{timeMinute}</span>
          </div>
+        </div>
+        <div className="w-full border-b-2"></div>
+        <div >
+          <div className="flex gap-1 items-center"><img src={icon} alt="" className="w-8"/>
+            {condition}</div>
         </div>
       </div>
     </>
