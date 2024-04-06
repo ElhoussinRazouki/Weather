@@ -1,11 +1,16 @@
+import Container from "./components/container/Container";
 import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {
 
   return (
     <>
- <Sidebar/>
+     
+<div className="flex "><Sidebar/><Container/>
 
+</div> 
+
+ 
     </>
   )
 }
