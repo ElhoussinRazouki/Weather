@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import sniper from "../../assets/targets.png";
-
-
-const Sidebar = () => {
+import {TargetNameContext} from '../../App'
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const Sidebar = () => {
+
+  const {setNameSearch}=useContext(TargetNameContext)
   const SearchValue = useRef();
 
   const [targetName, setTargetName] = useState("Morocco");
@@ -30,6 +31,7 @@ const Sidebar = () => {
         setCondition(res.data.current.condition.text)
         setIcon(res.data.current.condition.icon)
         setLocation(res.data.location)
+        setNameSearch(targetName);
         console.log(timeMinute);
       })
       .catch((error) => console.log(error));
@@ -37,7 +39,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="flex h-[100vh] bg-white w-[50%] sm:w-[26%] flex-col  items-start py-6 px-12 gap-2 ">
+      <div className="flex  bg-white w-[50%] sm:w-[30%] flex-col rounded-l-3xl items-start py-6 px-6 gap-2 box-border  ">
         <form className="w-full pb-3 " onSubmit={(e) => e.preventDefault()}>
           <label
             htmlFor="default-search"
@@ -86,25 +88,25 @@ const Sidebar = () => {
             className="w-40"
           />
         </div>
-        <div className="text-7xl relative">
-          <h1 className="pr-7 py-4">
+        <div className="text-4xl relative">
+          <h1 className=" py-1">
             {temp}
-            °<span className="absolute end-0 top-0">c</span> 
+            <span className="absolute text-[28px] top-0">°C</span> 
           </h1>
          <div className="flex gap-2">
           <p className="text-lg space-x-4"> {days[date]}, </p><span className="text-lg text-slate-500">  {timeHours}:{timeMinute}</span>
          </div>
         </div>
-        <div className="w-full border-b-2"></div>
+        <div className="w-full border-b-2 my-5"></div>
         <div >
-          <div className="flex gap-1 items-center"><img src={icon} alt="" className="w-8"/>
+          <div className="flex gap-1 items-center text-[10px]"><img src={icon} alt="" className="w-6"/>
             {condition}</div>
         </div>
-        <div className="flex gap-1 items-center"><img src={icon} alt="" className="w-8"/>
+        <div className="flex gap-1 items-center text-[10px]"><img src={icon} alt="" className="w-6"/>
             {condition}</div>
-        <div className="relative">
-          <img className="rounded-xl" src="https://s.w-x.co/util/image/v/719_Urban_Heat_Ari_1280x720_3092037615.jpg?v=at&w=815&h=458" alt="" />
-          <p className="absolute  object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-white text-center"><span >{`${location.name} , ${location.country}`}</span>
+        <div className="relative w-full flex justify-center">
+          <img className="rounded-xl w-52 h-20" src="https://s.w-x.co/util/image/v/719_Urban_Heat_Ari_1280x720_3092037615.jpg?v=at&w=815&h=458" alt="" />
+          <p className="absolute  object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-white text-center w-full"><span >{`${location.name} , ${location.country}`}</span>
 </p>
           </div>
         
