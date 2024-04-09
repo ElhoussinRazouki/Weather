@@ -8,6 +8,7 @@ import { Container } from "postcss";
 const Week = () => {
     
 const daysOfWeek = ['Sun', 'Mon', 'Tues', 'Wednes', 'Thurs', 'Fri', 'Satur'];
+const temp = [{ day: 2, temp: 29 }, { day: 3, temp: 30 }, { day: 4, temp: 31 }, { day: 5, temp: 32 }, { day: 6, temp: 33 }, { day: 7, temp: 34 }, { day: 8, temp: 35 }];
 // for (let i = 0; i < 7; i++) {
 // console.log( new Date().getFullYear()+"/"+(new Date().getMonth()+1) +"/"+(new Date().getDay() +i));
 
@@ -38,7 +39,6 @@ const arrayWeek=[];
         axios.get(apiUrl).then((res)=>
         {
           
-          
 
         });
     }
@@ -54,9 +54,9 @@ const arrayWeek=[];
      <div className="p-8 w-full flex flex-col justify-between h-[100%]">
      <div>
         <ul className="flex justify-between gap-2">
-        {/* {[...Array(7).keys()].map((index) => (
-              <li key={index}>{  <CardWeather day={resultWeek[index]}/>}</li>
-            ))} */}
+        {
+          temp.map((t) => (<CardWeather day={t.day} temp={t.temp} />))
+        }
        
         {
           resultWeek.map((res)=>console.log(res))
