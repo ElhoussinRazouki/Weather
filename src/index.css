@@ -2,7 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+    font-family: Solomon;
+    src: url("./assets/Solomon Sans Thin.otf");
+  }
+  @font-face {
+    font-family: Solomon-Bold;
+    src: url("./assets/Solomon Sans Thin Bold.otf");
+  }
+  
 body{
+    display: flex;
     box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+height: 100vh;
     background-color: #D6D7DA;
+font-family: Solomon;
 }

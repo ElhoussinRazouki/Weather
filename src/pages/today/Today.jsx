@@ -1,11 +1,10 @@
 import { useContext } from "react";
 
 const Today = () => {
-    const {nameSearch}=useContext(TargetNameContext);
   return (
-    <>
-      
-    </>
+    <div className="p-8 w-full flex flex-col justify-between h-[100%]">
+<div>ddd</div>
+    </div>
   )
 }
 
