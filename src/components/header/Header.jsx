@@ -1,4 +1,4 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import avatar from "../../assets/avatar.png";
 import "./header.css";
 import { useState } from "react";
@@ -18,6 +18,12 @@ const Header = () => {
             {" "}
             <NavLink to="/Week" className="text-slate-400 active:text-blue-500">
               Week
+            </NavLink>{" "}
+          </li>
+          <li>
+            {" "}
+            <NavLink to="/Future" className="text-slate-400 active:text-blue-500">
+            Future
             </NavLink>{" "}
           </li>
         </ul>
