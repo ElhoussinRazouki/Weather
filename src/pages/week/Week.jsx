@@ -22,9 +22,7 @@ const Week = () => {
         const currentYear = currentDate.getFullYear();
 
         const arrayWeek = [];
-        const arrayIcon = [];
-        const arrayDay = [];
-        const arrayDog = [];
+      
 
         const requests = [];
 
