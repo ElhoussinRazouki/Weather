@@ -3,7 +3,7 @@ import avatar from "../../assets/avatar.png";
 import "./header.css";
 import { useState } from "react";
 const Header = () => {
-  const [activeClick, setActiveClick] = useState(false);
+  const [activeClick, setActiveClick] = useState(true);
   return (
     <>
       <nav className="flex justify-between items-end  h-16 px-8 w-full">

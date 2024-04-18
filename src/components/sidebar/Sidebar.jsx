@@ -21,7 +21,8 @@ const Sidebar = () => {
   useEffect(() => {
     axios
       .get(
-        `http://api.weatherapi.com/v1/current.json?key=570663d036e449f4b69223704240304&q=${targetName}&aqi=no`
+        
+        `http://api.weatherapi.com/v1/current.json?key=c1bec0851048438285410716241804&q=${targetName}&aqi=no`
       )
       .then((res) => {
         setTemp(res.data.current.temp_c);
@@ -31,7 +32,7 @@ const Sidebar = () => {
         setCondition(res.data.current.condition.text)
         setIcon(res.data.current.condition.icon)
         setLocation(res.data.location)
-        setNameSearch(targetName);
+        setNameSearch(targetName.length?targetName : "Morocco");
         console.log(timeMinute);
       })
       .catch((error) => console.log(error));
