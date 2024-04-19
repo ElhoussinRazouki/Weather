@@ -5,6 +5,7 @@ import CardWeather from "../../components/cardWeather/CardWeather";
 import loc from "../../assets/loc.png";
 import Sunset from "../../assets/Sunset.png";
 import Sunrise from "../../assets/Sunset.png";
+import "./week.css"
 
    
 const Week = () => {
@@ -22,7 +23,7 @@ const Week = () => {
         setDaysOfWeek(res.data.forecast.forecastday);
         setCurrent(res.data.current);
         setAir(res.data.current.air_quality.co);
-        console.log(current.air_quality.co);
+        console.log();
       })
       .catch((error) => console.log(error));
   }, [nameSearch]);
@@ -49,8 +50,8 @@ const Week = () => {
         <ul className="grid grid-cols-3  gap-3 ">
           <li className="relative flex flex-col pl-5 py-5 bg-white w-64  h-32 rounded-xl justify-between text-start overflow-hidden ">
             <p className="font-bold text-slate-400 ">UV Index</p>
-            <div className=" border-2 b rounded-full h-32  w-36 clip-half "></div>
-            <p className="">
+            <div role="progressbar" aria-valuemin="0" aria-valuemax="100" style={{ '--value': `${daysOfWeek.length ? ((parseInt(daysOfWeek[0].day.uv )/15))*100 : "30"}` }} className="absolute w-32 top-20 left-1/2 -translate-x-1/2 -translate-y-1/2 "> </div>
+            <p className=" w-full flex justify-center text-3xl pr-3">
               {daysOfWeek.length ? daysOfWeek[0].day.uv : "??"}
             </p>
           </li>
