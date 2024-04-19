@@ -11,7 +11,9 @@
     font-family: Solomon-Bold;
     src: url("./assets/Solomon Sans Thin Bold.otf");
   }
-  
+  * {
+    box-sizing: border-box;
+  }
 body{
     display: flex;
     box-sizing: border-box;
