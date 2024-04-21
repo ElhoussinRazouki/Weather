@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { TargetNameContext } from "../../App";
+import { TargetTempContext } from "../../App";
 import CardWeather from "../../components/cardWeather/CardWeather";
 import loc from "../../assets/loc.png";
 import Sunset from "../../assets/Sunset.png";
@@ -11,6 +12,7 @@ import "./week.css"
 const Week = () => {
   const daysWeek = ["Sun", "Mon", "Tues", "Wednes", "Thurs", "Fri", "Satur"];
   const { nameSearch } = useContext(TargetNameContext);
+  const { typeTemp } = useContext(TargetTempContext);
   const [daysOfWeek, setDaysOfWeek] = useState([]);
   const [current, setCurrent] = useState([]);
   const [air, setAir] = useState("");
@@ -26,7 +28,7 @@ const Week = () => {
         console.log();
       })
       .catch((error) => console.log(error));
-  }, [nameSearch]);
+  }, [nameSearch,]);
   return (
     <div className="p-8 w-full flex flex-col justify-between h-[100%] ">
       <div>

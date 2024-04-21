@@ -1,12 +1,14 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import sniper from "../../assets/targets.png";
+import { TargetTempContext } from "../../App";
 import {TargetNameContext} from '../../App'
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const Sidebar = () => {
 
   const {setNameSearch}=useContext(TargetNameContext)
   const SearchValue = useRef();
+  const {typeTemp} =useContext(TargetTempContext);
 
   const [targetName, setTargetName] = useState("Morocco");
   const [temp, setTemp] = useState(12);
@@ -27,7 +29,7 @@ const Sidebar = () => {
 
 apiUrl      )
       .then((res) => {
-        setTemp(res.data.current.temp_c);
+        setTemp(typeTemp?res.data.current.temp_c: res.data.current.temp_f);
         setDate(new Date(res.data.current.last_updated).getDay())
         setTimeHours(new Date(res.data.current.last_updated).getHours())
         setTimeMinute(new Date(res.data.current.last_updated).getMinutes())
@@ -40,7 +42,7 @@ apiUrl      )
         console.log(res.data.forecast.forecastday.day.condition.icon);
       })
       .catch((error) => console.log(error));
-  }, [targetName]);
+  }, [targetName,typeTemp]);
 
   return (
     <>
@@ -96,7 +98,7 @@ apiUrl      )
         <div className="text-4xl relative">
           <h1 className=" py-1">
             {temp}
-            <span className="absolute text-[28px] top-0">°C</span> 
+            <span className="absolute text-[28px] top-0">{typeTemp?"°C":"°F"}</span> 
           </h1>
          <div className="flex gap-2">
           <p className="text-lg space-x-4"> {days[date]}, </p><span className="text-lg text-slate-500">  {timeHours}:{timeMinute}</span>

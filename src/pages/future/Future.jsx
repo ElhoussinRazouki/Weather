@@ -2,12 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import CardWeather from "../../components/cardWeather/CardWeather";
 import { TargetNameContext } from "../../App";
+import { TargetTempContext } from "../../App";
 import './future.css';
 
 const Future = () => {
     const daysOfWeek = ["Sun", "Mon", "Tues", "Wednes", "Thurs", "Fri", "Satur"];
 
     const { nameSearch } = useContext(TargetNameContext);
+    const { typeTemp } = useContext(TargetTempContext);
 
     const [weatherData, setWeatherData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -48,7 +50,7 @@ const Future = () => {
                 setError(error); 
                 setLoading(false); 
             });
-    }, [nameSearch]);
+    }, [nameSearch,typeTemp]);
 
     if (loading) return <div className="loader  text-center  absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 "></div>;
 
