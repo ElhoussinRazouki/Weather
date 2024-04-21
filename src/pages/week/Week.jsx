@@ -37,7 +37,7 @@ const Week = () => {
             <li key={index}>
               <CardWeather
                 day={daysWeek[new Date(res.date).getDay()]}
-                dog={res.day.avgtemp_c}
+                dog={typeTemp?res.day.avgtemp_c+ "°":res.day.avgtemp_f+ "°"}
                 imgW={res.day.condition.icon}
               />
             </li>
