@@ -1,9 +1,13 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import avatar from "../../assets/avatar.png";
 import "./header.css";
-import { useState } from "react";
+import {TargetTempContext} from '../../App'
+import { useContext, useState } from "react";
+
+
 const Header = () => {
-  const [activeClick, setActiveClick] = useState(false);
+  const [activeClick, setActiveClick] = useState(true);
+  const {setTypeTemp} =useContext(TargetTempContext);
   return (
     <>
       <nav className="flex justify-between items-end  h-16 px-8 w-full">
@@ -20,10 +24,16 @@ const Header = () => {
               Week
             </NavLink>{" "}
           </li>
+          <li>
+            {" "}
+            <NavLink to="/Future" className="text-slate-400 active:text-blue-500">
+            Future
+            </NavLink>{" "}
+          </li>
         </ul>
         <div className="flex gap-5 items-center">
           <button
-            onClick={()=>setActiveClick(true)}
+            onClick={()=>{setActiveClick(true);setTypeTemp(true)}}
             className={
               activeClick
                 ? "bg-black text-white rounded-full w-8 h-8 text-center font-bold "
@@ -33,7 +43,7 @@ const Header = () => {
             °C
           </button>
           <button
-            onClick={()=>setActiveClick(false)}
+            onClick={()=>{setActiveClick(false); setTypeTemp(false)}}
             className={
               activeClick
                 ?"bg-white rounded-full w-8 h-8 text-center font-bold "
